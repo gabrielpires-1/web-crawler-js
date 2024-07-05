@@ -1,5 +1,6 @@
 import { argv } from 'process';
-import { crawlPage, normalizeURL, getURLsFromHTML } from './crawl.js'
+import { crawlPage } from './crawl.js';
+import { printReport } from './report.js';
 
 console.log(argv.length)
 
@@ -15,9 +16,7 @@ async function main() {
     try {
       const pages = await crawlPage(baseURL, baseURL, {});
       
-      for (const page of Object.entries(pages)) {
-        console.log(page)
-      }
+      printReport(pages);
     } catch (e) {
       console.error(`Error in crawling page: ${e.message}`);
     }

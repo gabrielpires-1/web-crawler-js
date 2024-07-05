@@ -34,7 +34,6 @@ function getURLsFromHTML(htmlBody, baseURL) {
 }
 
 async function crawlPage(baseURL, currentURL = baseURL, pages = {}) {
-  console.log(`Crawling ${currentURL}`);
   const baseUrlObj = new URL(baseURL);
   const currentUrlObj = new URL(currentURL);
   if (baseUrlObj.hostname !== currentUrlObj.hostname) {
@@ -49,6 +48,7 @@ async function crawlPage(baseURL, currentURL = baseURL, pages = {}) {
     pages[normalizedCurrentURL]++;
     return pages;
   } else {
+    console.log(`Crawling ${currentURL}`);
     pages[normalizedCurrentURL] = 1;
   }
 
